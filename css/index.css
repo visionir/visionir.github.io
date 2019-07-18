@@ -21,7 +21,7 @@ body {
   background: #fff;
   color: #4c4948;
   font-size: 14px;
-  font-family: consolas, Lato, Helvetica Neue For Number, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, PingFang SC, Hiragino Sans GB,"Microsoft JhengHei", "MicrMicrosoft YaHei", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: Lato, Helvetica Neue For Number, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, PingFang SC, Hiragino Sans GB, "Microsoft YaHei", Helvetica Neue, Helvetica, Arial, sans-serif;
   line-height: 2;
 }
 *::-webkit-scrollbar {
@@ -508,8 +508,6 @@ table td {
   color: #90a4ae;
   font-size: 14px;
   line-height: 20px;
-  counter-reset: line;
-  white-space: pre-wrap;
 }
 figure.highlight {
   position: relative;
@@ -523,7 +521,7 @@ blockquote {
 }
 .article-container pre,
 .article-container code {
-  font-family: consolas, Menlo, "PingFang SC", "Microsoft JhengHei","Microsoft YaHei", monospace, Helvetica Neue For Number !important;
+  font-family: consolas, Menlo, "PingFang SC", "Microsoft YaHei", monospace, Helvetica Neue For Number !important;
 }
 .article-container code {
   padding: 0.1rem 0.2rem;
@@ -559,15 +557,6 @@ blockquote {
 .article-container .highlight .line::selection {
   background: rgba(128,203,196,0.251);
   color: #90a4ae;
-}
-.article-container .highlight .line:before {
-  display: inline-block;
-  padding: 0 0.3rem 0 0;
-  min-width: 1.6rem;
-  color: #cfd8dc;
-  content: counter(line);
-  counter-increment: line;
-  text-align: left;
 }
 .article-container .highlight table {
   position: relative;
