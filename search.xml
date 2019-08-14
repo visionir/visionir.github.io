@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>算法挑战——最大连续1的个数</title>
+      <link href="/2019/08/13/twelve-2019-8-13/"/>
+      <url>/2019/08/13/twelve-2019-8-13/</url>
+      
+        <content type="html"><![CDATA[<h2>最大连续1的个数</h2><h3>类型:array</h3><h3>给定一个二进制数组,计算其中最大连续1的个数.</h3><p><b>示例1:</b></p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: [1,1,0,1,1,1]</span><br><span class="line">输出: 3</span><br><span class="line">解释: 开头的两位和最后的三位都是连续1，所以最大连续1的个数是 3.</span><br></pre></td></tr></table></figure><p><b>注意:</b><br>1.输入的数组只包含0和1.<br>2.输入数组的长度是正整数,且不超过10,000.</p><h2>解析:</h2>注意传入数组中最后一个元素的判断.<h3>方法1:</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findMaxConsecutiveOnes</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] arr=<span class="keyword">new</span> <span class="keyword">int</span>[nums.length];</span><br><span class="line">        <span class="keyword">int</span> num=<span class="number">0</span>,j=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> max=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i &lt; nums.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i]==<span class="number">1</span>)&#123;</span><br><span class="line">                num++;</span><br><span class="line">                <span class="keyword">if</span>(i==nums.length-<span class="number">1</span>)&#123;</span><br><span class="line">                    arr[j]=num;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                arr[j]=num;</span><br><span class="line">                num=<span class="number">0</span>;</span><br><span class="line">                j++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        max=arr[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k &lt; arr.length; k++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[k]&gt;max)&#123;</span><br><span class="line">                max = arr[k];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> max;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 数据结构 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法挑战——三个数的最大乘积</title>
+      <link href="/2019/08/12/eleven-2019-8-12-2/"/>
+      <url>/2019/08/12/eleven-2019-8-12-2/</url>
+      
+        <content type="html"><![CDATA[<h2>三个数的最大乘积</h2><h3>类型:array|math</h3><h3>给定一个整型数组,在数组中找出由三个数组成的最大乘积,并输出这个乘积.</h3><p><b>示例1:</b></p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: [1,2,3]</span><br><span class="line">输出: 6</span><br></pre></td></tr></table></figure><p><b>示例2:</b></p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: [1,2,3,4]</span><br><span class="line">输出: 24</span><br></pre></td></tr></table></figure><p><b>注意:</b><br>1.给定的整型数组长度范围是[3,104],数组中所有的元素范围是[-1000, 1000].<br>2.输入的数组中任意三个数的乘积不会超出32位有符号整数的范围.</p><h2>解析:</h2>首先对传入的数组进行升序排序,判断负数的个数,如果负数个数小于1,那么结果为数组末尾3个数的乘积,否则比较末尾3个数乘积与第一、二和最后一个数三个数乘积的大小,返回最大数.<h3>方法1:</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maximumProduct</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        <span class="keyword">int</span> length=nums.length;</span><br><span class="line">        <span class="keyword">int</span> num=<span class="number">0</span>,num1=<span class="number">0</span>,num2=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i]&lt;<span class="number">0</span>)&#123;</span><br><span class="line">                num++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">       <span class="keyword">if</span>(num&gt;<span class="number">1</span>)&#123;</span><br><span class="line">           num1=nums[<span class="number">0</span>]*nums[<span class="number">1</span>]*nums[length-<span class="number">1</span>];</span><br><span class="line">           num2=nums[length-<span class="number">1</span>]*nums[length-<span class="number">2</span>]*nums[length-<span class="number">3</span>];</span><br><span class="line">           <span class="keyword">if</span>(num1&gt;=num2)&#123;</span><br><span class="line">               <span class="keyword">return</span> num1;</span><br><span class="line">           &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">               <span class="keyword">return</span> num2;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">           <span class="keyword">return</span> nums[length-<span class="number">1</span>]*nums[length-<span class="number">2</span>]*nums[length-<span class="number">3</span>];</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 数据结构 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法挑战——平方数之和</title>
+      <link href="/2019/08/12/ten-2019-8-12/"/>
+      <url>/2019/08/12/ten-2019-8-12/</url>
+      
+        <content type="html"><![CDATA[<h2>平方数之和</h2><h3>类型:math</h3><h3>给定一个非负整数c,你要判断是否存在两个整数a和b,使得a^2+b^2=c.</h3><p><b>示例1:</b></p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: 5</span><br><span class="line">输出: True</span><br><span class="line">解释: 1 * 1 + 2 * 2 = 5</span><br></pre></td></tr></table></figure><p><b>示例2:</b></p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: 3</span><br><span class="line">输出: False</span><br></pre></td></tr></table></figure><h2>解析:</h2>起初在编写代码时总是出现超时的情况,百度发现所有解法中j的取值都没有超过c/2,这时才发现当J超过c/2必然为false,于是将j的取值范围定义为0-c/2,同时判断j^2是否大于c,若大于则直接返回false.<br>方法2的思路更为清晰,减少了Math.sqrt()方法的调用,方法更好.<h3>方法1:</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">judgeSquareSum</span><span class="params">(<span class="keyword">int</span> c)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">double</span> j=<span class="number">0</span>;j&lt;=c/<span class="number">2</span>;j--)&#123;</span><br><span class="line">            <span class="keyword">if</span>(j*j&gt;c)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">double</span> s=Math.sqrt(c-j*j);</span><br><span class="line">                <span class="keyword">if</span>(s%<span class="number">1</span>==<span class="number">0</span>)&#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;     </span><br><span class="line">        &#125;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">false</span>;  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3>解法2:</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">judgeSquareSum</span><span class="params">(<span class="keyword">int</span> c)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> j = (<span class="keyword">int</span>) Math.sqrt(c);</span><br><span class="line">        <span class="keyword">while</span>(i&lt;=j)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(i*i+j*j==c)</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(i*i+j*j&lt;c)</span><br><span class="line">                i++;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                j--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 数据结构 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法挑战——自除数</title>
+      <link href="/2019/08/10/nine-2019-8-10/"/>
+      <url>/2019/08/10/nine-2019-8-10/</url>
+      
+        <content type="html"><![CDATA[<h2>自除数</h2><h3>类型:math</h3><h3>自除数 是指可以被它包含的每一位数除尽的数.例如,128是一个自除数,因为128%1 == 0,128%2==0,128%8==0.还有,自除数不允许包含0.给定上边界和下边界数字,输出一个列表,列表的元素是边界(含边界)内所有的自除数.</h3><p><b>示例1:</b></p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: </span><br><span class="line">上边界left = 1,下边界right = 22</span><br><span class="line">输出:[1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22]</span><br></pre></td></tr></table></figure><p><b>注意:</b></p><h4>每个输入参数的边界满足1 < = left < = right < = 10000.</h4><h2>解析:</h2><h3>方法1:</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">selfDividingNumbers</span><span class="params">(<span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; list=<span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=left;i&lt;=right;i++)&#123;</span><br><span class="line">            String s=i+<span class="string">""</span>;</span><br><span class="line">            <span class="keyword">int</span> length=s.length();</span><br><span class="line">            <span class="keyword">int</span> num=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;length;j++)&#123;</span><br><span class="line">                <span class="keyword">int</span> l=Integer.parseInt(s.charAt(j)+<span class="string">""</span>);</span><br><span class="line">                <span class="keyword">if</span>(l==<span class="number">0</span>)&#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(i%l==<span class="number">0</span>)&#123;</span><br><span class="line">                    num++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(num==length)&#123;</span><br><span class="line">                list.add(i);</span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 数据结构 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法挑战——缺失数字</title>
+      <link href="/2019/08/09/eight-2019-8-9/"/>
+      <url>/2019/08/09/eight-2019-8-9/</url>
+      
+        <content type="html"><![CDATA[<h2>缺失数字</h2><h3>类型:array|math|bit-manipulation</h3><h3>给定一个包含0, 1, 2, ..., n中n个数的序列,找出 0 .. n中没有出现在序列中的那个数.</h3><p><b>示例1:</b></p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: [3,0,1]</span><br><span class="line">输出: 2</span><br></pre></td></tr></table></figure><p><b>示例2:</b></p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: [9,6,4,2,3,5,7,0,1]</span><br><span class="line">输出: 8</span><br></pre></td></tr></table></figure><p><b>说明:</b></p><h4>你的算法应具有线性时间复杂度。你能否仅使用额外常数空间来实现?</h4><h2>解析:</h2><h3>方法1:</h3>先对传入的数组进行排序,然后通过对比找到中间缺失的数字,如果是末尾缺失则取数组最后一个数加一得到结果.<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">missingNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        <span class="keyword">int</span> res=-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=nums.length-<span class="number">1</span>;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i!=nums[i])&#123;</span><br><span class="line">                res=nums[i]-<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(res==-<span class="number">1</span>)&#123;</span><br><span class="line">            res=nums[nums.length-<span class="number">1</span>]+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 数据结构 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法挑战——下一个更大元素-I</title>
+      <link href="/2019/08/08/seven-2019-8-8-3/"/>
+      <url>/2019/08/08/seven-2019-8-8-3/</url>
+      
+        <content type="html"><![CDATA[<h2>下一个更大元素-I</h2><h3>类型:stack</h3><h3>给定两个没有重复元素的数组nums1和nums2,其中nums1是nums2 的子集.找到nums1中每个元素在nums2中的下一个比其大的值.<p>nums1中数字x的下一个更大元素是指x在nums2中对应位置的右边的第一个比x大的元素.如果不存在,对应位置输出-1.</p></h3><p></p><p><b>示例1:</b></p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: nums1 = [4,1,2], nums2 = [1,3,4,2].</span><br><span class="line">输出: [-1,3,-1]</span><br><span class="line">解释:</span><br><span class="line">    对于num1中的数字4,你无法在第二个数组中找到下一个更大的数字,因此输出-1.</span><br><span class="line">    对于num1中的数字1,第二个数组中数字1右边的下一个较大数字是 3.</span><br><span class="line">    对于num1中的数字2,第二个数组中没有下一个更大的数字,因此输出-1.</span><br></pre></td></tr></table></figure><p><b>示例2:</b></p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: nums1 = [2,4], nums2 = [1,2,3,4].</span><br><span class="line">输出: [3,-1]</span><br><span class="line">解释:</span><br><span class="line">    对于num1中的数字2,第二个数组中的下一个较大数字是3.</span><br><span class="line">    对于num1中的数字4,第二个数组中没有下一个更大的数字,因此输出-1.</span><br></pre></td></tr></table></figure><p><b>注意:</b><br></p><h4>1.nums1和nums2中所有元素是唯一的.</h4><br><h4>2.nums1和nums2的数组大小都不超过1000.</h4><p></p><h2>解析:</h2><h3>方法1:</h3>创建一个同等于nums1长度的数组arr并初始化值-1,接下来再创建一个于nums2元素相同的动态数组,<font color="#01AAED">动态数组的indexOf()方法可以通过值获得索引</font>,接下来判断索引的位置,如果为动态数组的末尾则continue结束本次循环,否则找到下一个更大元素并存入arr数组中,当遇到第一个更大元素即break跳出本层循环.<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] nextGreaterElement(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span>[] nums2) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] arr= <span class="keyword">new</span> <span class="keyword">int</span>[nums1.length];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> a=<span class="number">0</span>;a&lt;arr.length;a++)&#123;</span><br><span class="line">            arr[a]=-<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        ArrayList&lt;Integer&gt; arrayList=<span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> b:nums2)&#123;</span><br><span class="line">            arrayList.add(b);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums1.length;i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> index=arrayList.indexOf(nums1[i]);</span><br><span class="line">            <span class="keyword">if</span>(index==arrayList.size()-<span class="number">1</span>)&#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j=index+<span class="number">1</span>;j&lt;arrayList.size();j++)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(nums2[j]&gt;nums1[i])&#123;</span><br><span class="line">                        arr[i]=nums2[j];</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> arr;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 数据结构 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法挑战——七进制数</title>
+      <link href="/2019/08/08/six-2019-8-8-2/"/>
+      <url>/2019/08/08/six-2019-8-8-2/</url>
+      
+        <content type="html"><![CDATA[<h2>七进制数</h2><h3>类型:math</h3><h3>给定一个整数，将其转化为7进制,并以字符串形式输出.</h3><p><b>示例1:</b></p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: 100</span><br><span class="line">输出: &quot;202&quot;</span><br></pre></td></tr></table></figure><p><b>示例2:</b></p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: -7</span><br><span class="line">输出: &quot;-10&quot;</span><br></pre></td></tr></table></figure><h2>解析:</h2><h3>方法1:</h3>七进制数顾名思义就是逢七进一,首先将负数转换成正数再统一处理,最后判断参数为正数还是负数,负数则在头部添加'-'号.<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">convertToBase7</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">        StringBuilder sBuilder=<span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">int</span> num2=Math.abs(num);</span><br><span class="line">        <span class="keyword">while</span>(num2&gt;=<span class="number">7</span>)&#123;</span><br><span class="line">            sBuilder.append(num2%<span class="number">7</span>+<span class="string">""</span>);</span><br><span class="line">            num2=num2/<span class="number">7</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        sBuilder.append(num2+<span class="string">""</span>);</span><br><span class="line">        sBuilder.reverse();</span><br><span class="line">        <span class="keyword">if</span>(num&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> sBuilder.toString();</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            sBuilder.insert(<span class="number">0</span>, <span class="string">'-'</span>);</span><br><span class="line">            <span class="keyword">return</span> sBuilder.toString();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;      </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 数据结构 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法挑战——求众数</title>
+      <link href="/2019/08/08/five-2019-8-8/"/>
+      <url>/2019/08/08/five-2019-8-8/</url>
+      
+        <content type="html"><![CDATA[<h2>求众数</h2><h3>类型:array | divide-and-conquer | bit-manipulation</h3><h3>给定一个大小为 n 的数组,找到其中的众数.众数是指在数组中出现次数大于 ⌊ n/2 ⌋ 的元素.<p>你可以假设数组是非空的,并且给定的数组总是存在众数.</p></h3><p></p><p><b>示例1:</b></p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: [3,2,3]</span><br><span class="line">输出: 3</span><br></pre></td></tr></table></figure><p><b>示例2:</b></p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: [2,2,1,1,1,2,2]</span><br><span class="line">输出: 2</span><br></pre></td></tr></table></figure><h2>解析:</h2><h3>方法1:</h3>目前没有想到比较好的解决方法,仅有一个比较低级的解法,首先通过hashtable对象存储数组中元素以及元素出现的次数,获取hashtable中所有value的值存储到Collection对象中,转换成Integer数组获取元素中最大的值,最后通过比较找到值所对应的键并返回,<font color="#01AAED">此解法违背了hashtable的设计初衷(通过key来获得value).</font><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">majorityElement</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        Hashtable&lt;Integer,Integer&gt; hashtable=<span class="keyword">new</span> Hashtable&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(hashtable.containsKey(nums[i]))&#123;</span><br><span class="line">                <span class="keyword">int</span> a=(Integer)hashtable.get(nums[i]);</span><br><span class="line">                a++;</span><br><span class="line">                hashtable.put(nums[i],a);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                hashtable.put(nums[i],<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        Collection col=hashtable.values();</span><br><span class="line">        Integer[] arr=<span class="keyword">new</span> Integer[col.size()];</span><br><span class="line">        col.toArray(arr);</span><br><span class="line">        <span class="keyword">int</span> max=arr[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;arr.length;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[j]&gt;max)&#123;</span><br><span class="line">                max=arr[j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;nums.length;k++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(hashtable.get(nums[k])==max)&#123;</span><br><span class="line">                <span class="keyword">return</span> nums[k];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 数据结构 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法挑战——两数之和</title>
+      <link href="/2019/07/29/four-2019-7-29-2/"/>
+      <url>/2019/07/29/four-2019-7-29-2/</url>
+      
+        <content type="html"><![CDATA[<h2>两数之和</h2><h3>类型:array|hash-table</h3><h3>给定一个整数数组nums和一个目标值target,请你在该数组中找出和为目标值的那两个整数,并返回他们的数组下标.<p>你可以假设每种输入只会对应一个答案.但是,你不能重复利用这个数组中同样的元素.</p></h3><p></p><p><b>示例:</b></p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">给定 nums = [2,7,11,15],target = 9</span><br><span class="line">因为 nums[0] + nums[1] = 2 + 7 = 9</span><br><span class="line">所以返回 [0,1]</span><br></pre></td></tr></table></figure><h2>解析:</h2><h3>方法1:</h3><p>我们可以利用数组嵌套的方式暴力解题,方法如下:</p><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length-<span class="number">1</span>;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;nums.length;j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(nums[i]+nums[j]==target)&#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;i,j&#125;;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这种方法的时间复杂度为O(n^2),不是特别理想,我们可以试一试下面这种方法.</p><h3>方法2:</h3><p>利用Hashtable的特性</p><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        Hashtable&lt;Integer,Integer&gt; hashtable=<span class="keyword">new</span> Hashtable&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(hashtable.containsKey(nums[i]))&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;hashtable.get(nums[i]),i&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            hashtable.put(target-nums[i],i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>显而易见第二种方法的时间复杂度O(n)为更优的解法.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 数据结构 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法挑战——只出现一次的数字</title>
+      <link href="/2019/07/29/Three-2019-7--29/"/>
+      <url>/2019/07/29/Three-2019-7--29/</url>
+      
+        <content type="html"><![CDATA[<h2>只出现一次的数字</h2><h3>类型:hash-table|bit-manipulation</h3><h3>给定一个非空整数数组,除了某个元素只出现一次以外,其余每个元素均出现两次.找出那个只出现了一次的元素.<p><b>说明:</b></p><p>你的算法应该具有线性时间复杂度.你可以不使用额外空间来实现吗?</p></h3><p></p><p><b>示例 1:</b></p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">输入: [2,2,1]</span><br><span class="line">输出: 1</span><br></pre></td></tr></table></figure><p><b>示例 2:</b></p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">输入: [4,1,2,1,2]</span><br><span class="line">输出: 4</span><br></pre></td></tr></table></figure><h2>解析:</h2><h3>方法1:</h3><p>由题可知,我们使用的算法要求采用线性时间复杂度O(n),且空间复杂度为O(1).那么我们可以使用异或(^)运算来解题,<font color="#1E9FFF">异或运算的法则是:相同为0,不同为1.</font></p><table><thead><tr><th style="text-align:center">A</th><th style="text-align:center">B</th><th style="text-align:center">P</th></tr></thead><tbody><tr><td style="text-align:center">0</td><td style="text-align:center">1</td><td style="text-align:center">1</td></tr><tr><td style="text-align:center">1</td><td style="text-align:center">0</td><td style="text-align:center">1</td></tr><tr><td style="text-align:center">0</td><td style="text-align:center">0</td><td style="text-align:center">0</td></tr><tr><td style="text-align:center">1</td><td style="text-align:center">1</td><td style="text-align:center">0</td></tr></tbody></table><p>不难得出任意一个数与0异或结果都是这个数本身,任意一个数与其本身异或结果都是0,例如4与3异或(100 ^ 011=111)再与4异或(111 ^ 100=011)结果为3,通过异或可以得到数组中唯一的只出现一次的数.</p><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">singleNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i:nums)&#123;</span><br><span class="line">            result^=i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Solution s=<span class="keyword">new</span> Solution();</span><br><span class="line">        <span class="keyword">int</span> a=s.singleNumber(&#123;<span class="number">4</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>&#125;);</span><br><span class="line">        System.out.println(a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 数据结构 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>如何使用Hexo+github page快速搭建个人博客?</title>
+      <link href="/2019/07/19/Second-2019-7-19/"/>
+      <url>/2019/07/19/Second-2019-7-19/</url>
+      
+        <content type="html"><![CDATA[<h2>1.前言</h2><h3>1.1为什么选择github page搭建博客？</h3><blockquote><p>1.搭建简单,免费使用;<br><br>2.静态项目,访问速度快;<br><br>3.支持绑定你的域名;<br><br>4.基于github的版本管理,随时恢复以前的版本,且数据安全;<br><br>5.可以轻松的将博客打包,发布到其他平台.<br></p></blockquote><h3>1.2准备事项</h3><blockquote><p>1.创建个人github账户;<br><br>2.下载node.js、git for windows;</p></blockquote><h2>2.搭建github博客</h2><h3>2.1创建github仓库</h3>登录<a href="https://www.github.com" target="_blank" rel="noopener">github</a>创建一个名为<font color="#5FB878">用户名.github.io</font>仓库,例如：github用户名为text,那么仓库名则为<font color="#5FB878">text.github.io</font>,注意：一个github账号只能创建一个可以直接使用域名访问的仓库，创建完成后我们就可以进行下一步操作了。<p><img src="https://s2.ax1x.com/2019/07/19/ZxYIu4.png" alt="1.png"></p><p><img src="https://s2.ax1x.com/2019/07/19/ZxtrRK.png" alt="2.png"></p><h3>2.2绑定你的个人域名</h3>如果你不想使用个人域名访问你的博客，可以略过此步骤，个人域名可以通过<a href="https://www.aliyun.com" target="_blank" rel="noopener">阿里云</a>、<a href="https://cloud.tencent.com/" target="_blank" rel="noopener">腾讯云</a>等购买，初次购买有很大的优惠。接下来我们前往域名供应商控制台进行域名解析操作（以腾讯云为例）：CNAME填写github仓库域名，A记录填写IP，由于我们不知道自己的github仓库域名IP，我们可以通过ping来获取，到你的github仓库根目录创建一个名为CNAME的文件（无后缀文件），内容为你购买的域名，然后绑定我们的域名。<p><img src="https://s2.ax1x.com/2019/07/19/ZxYNNt.png" alt="3.png"></p><p><img src="https://s2.ax1x.com/2019/07/19/ZxGGxe.png" alt="4.png"></p><p><img src="https://s2.ax1x.com/2019/07/20/ZzPJUI.png" alt="5.png"></p><p><img src="https://s2.ax1x.com/2019/07/19/Zx8w3F.png" alt="6.png"></p><p><img src="https://s2.ax1x.com/2019/07/20/Zzp5qA.png" alt="7.png"></p><p><img src="https://s2.ax1x.com/2019/07/20/Zzpxqs.png" alt="8.png"></p><p><img src="https://s2.ax1x.com/2019/07/20/ZzCOBj.png" alt="9.png"></p><p><img src="https://s2.ax1x.com/2019/07/20/ZzCXHs.png" alt="10.png"></p><p>接下来会看到我们站点更新了</p><p><img src="https://s2.ax1x.com/2019/07/20/ZzPjMD.png" alt="11.png"></p><h2>3.安装及配置</h2><h3>3.1安装git</h3>1.官方：https://git-scm.com/download/win <br>2.淘宝NPM镜像：https://npm.taobao.org/mirrors/git-for-windows/    （推荐使用，下载速度快）<p><img src="https://s2.ax1x.com/2019/07/19/ZxrXTS.png" alt="12.png"></p><p>勾选additional icons方便使用</p><p><img src="https://s2.ax1x.com/2019/07/19/ZxrzWj.png" alt="13.png"></p><p><img src="https://s2.ax1x.com/2019/07/20/ZxsulR.png" alt="14.png"></p><p>直接Next，安装结束。</p><h3>3.2安装Node.js</h3>1.官方（国外）：https://nodejs.org/en/ <br>2.官方（国内）：http://nodejs.cn/download/ <br>3.淘宝NPM镜像：https://npm.taobao.org/mirrors/node<p><img src="https://s2.ax1x.com/2019/07/20/Zxsgpj.png" alt="15.png"></p><p>同样，直接Next，安装结束。</p><h3>3.3安装Hexo</h3>在本地磁盘创建一个Hexo文件夹存储本地文件<p><img src="https://s2.ax1x.com/2019/07/20/ZxySAO.png" alt="16.png"></p><p>进入该文件夹下右击打开Git命令</p><p><img src="https://s2.ax1x.com/2019/07/20/ZxynUS.png" alt="17.png"></p><p>安装Hexo</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install -g hexo</span><br></pre></td></tr></table></figure><p>初始化</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure><p>完成后，Hexo文件夹下会生成数个文件</p><p><a href="https://imgchr.com/i/Zx6foT" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/07/20/Zx6foT.png" alt="18.png"></a></p><p>执行</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure><p>hexo g是hexo generate的简写，用来生成静态文件；hexo d是hexo deploy的简写，用来部署网站；hexo s是hexo server的简写，用来启动服务器，默认情况下，访问网址为： <a href="http://localhost:4000/%E3%80%82" target="_blank" rel="noopener">http://localhost:4000/。</a> 这三个指令非常重要，经常会使用到。</p> <h3>3.4配置git</h3> 进入git bash命令配置我们的git参数，设置git姓名和邮箱（填写你的github用户名以及github注册邮箱）。<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git config --global user.name "your_name"</span><br></pre></td></tr></table></figure><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git config --global user.email "your_email@XX.com"</span><br></pre></td></tr></table></figure><p>由于github上连接仓库的验证是通过SSH的公开密钥来认证的，因此我们要配置自己的SSH Key，</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git config --global user.email "your_email@XX.com"</span><br></pre></td></tr></table></figure><p>三次回车之后会自动生成一个.ssh文件在用户目录下，进入用户目录（/Users/your_user/.ssh）找到id_rsa.pub文件并用记事本打开，复制密钥</p><p><img src="https://s2.ax1x.com/2019/07/20/ZzPJUI.png" alt="19.png"></p><p><img src="https://s2.ax1x.com/2019/07/20/ZzVUGn.png" alt="20.png"></p><p><img src="https://s2.ax1x.com/2019/07/20/ZzVDqU.png" alt="21.png"></p><p>复制一下代码检测是否添加成功</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure><p>当提示Are you sure you want to continue connecting (yes/no)?，输入yes，然后会提示：</p><p>Hi  XXX! You’ve successfully authenticated, but GitHub does not provide shell access.<br>这里很多人会直接回车导致连接失败。</p><p>修改_config.yml<br>打开创建的Hexo文件夹找到_config.yml用记事本打开，找到deploy关键项，修改以下内容</p><p><img src="https://s2.ax1x.com/2019/07/20/Zzme54.png" alt="22.png"></p><p>repository项可以通过github的项目目录下查看</p><p><img src="https://s2.ax1x.com/2019/07/20/ZzmaRA.png" alt="23.png"></p><p><font color="#5FB878">注意，yml文件下名称后留有空格，如果没有保留空格会导致无效。</font></p><p>替换之后，部署git</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure><p>执行</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure><p>到此，我们的个人博客创建完成。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 博客 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+            <tag> 博客 </tag>
+            
+            <tag> github </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2019/07/18/hello-world/"/>
+      <url>/2019/07/18/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="quick-start"><a class="markdownIt-Anchor" href="#quick-start"></a> Quick Start</h2><h3 id="create-a-new-post"><a class="markdownIt-Anchor" href="#create-a-new-post"></a> Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="run-server"><a class="markdownIt-Anchor" href="#run-server"></a> Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="generate-static-files"><a class="markdownIt-Anchor" href="#generate-static-files"></a> Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="deploy-to-remote-sites"><a class="markdownIt-Anchor" href="#deploy-to-remote-sites"></a> Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>
