@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>算法挑战——赎金信</title>
+      <link href="/2019/08/14/fourteen-2019-8-14-2/"/>
+      <url>/2019/08/14/fourteen-2019-8-14-2/</url>
+      
+        <content type="html"><![CDATA[<h2>赎金信</h2><h3>类型:string</h3><h3>给定一个赎金信 (ransom) 字符串和一个杂志(magazine)字符串,判断第一个字符串ransom能不能由第二个字符串magazines里面的字符构成.如果可以构成,返回true;否则返回false.(题目说明:为了不暴露赎金信字迹,要从杂志上搜索各个需要的字母,组成单词来表达意思.)</h3><p><b>注意</b><br>你可以假设两个字符串均只含有小写字母.</p><p><b>示例:</b></p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">canConstruct(&quot;a&quot;, &quot;b&quot;) -&gt; false</span><br><span class="line">canConstruct(&quot;aa&quot;, &quot;ab&quot;) -&gt; false</span><br><span class="line">canConstruct(&quot;aa&quot;, &quot;aab&quot;) -&gt; true</span><br></pre></td></tr></table></figure><h2>解析:</h2>sb.deleteCharAt(sb.indexOf(ransomNote.charAt(i)+"")),找到第一个包含该字符串的位置并删除,确保正确的判断相同元素个数是否相同.<h3>方法1:</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">canConstruct</span><span class="params">(String ransomNote, String magazine)</span> </span>&#123;</span><br><span class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder(magazine);</span><br><span class="line">        <span class="keyword">int</span> length = ransomNote.length();</span><br><span class="line">        <span class="keyword">int</span> num=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(magazine.contains(ransomNote.charAt(i)+<span class="string">""</span>))&#123;</span><br><span class="line">                num++;</span><br><span class="line">                magazine=(sb.deleteCharAt(sb.indexOf(ransomNote.charAt(i)+<span class="string">""</span>))).toString();</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(num == length)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;   </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 数据结构 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>算法挑战——猜数字大小</title>
       <link href="/2019/08/14/Thirteen-2019-8-14/"/>
       <url>/2019/08/14/Thirteen-2019-8-14/</url>
