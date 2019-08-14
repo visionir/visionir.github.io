@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>算法挑战——猜数字大小</title>
+      <link href="/2019/08/14/Thirteen-2019-8-14/"/>
+      <url>/2019/08/14/Thirteen-2019-8-14/</url>
+      
+        <content type="html"><![CDATA[<h2>猜数字大小</h2><h3>类型:binary-search</h3><h3>我们正在玩一个猜数字游戏.游戏规则如下：我从1到n选择一个数字.你需要猜我选择了哪个数字.每次你猜错了,我会告诉你这个数字是大了还是小了.你调用一个预先定义好的接口 guess(int num),它会返回3个可能的结果((-1,1或0):</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-1 : 我的数字比较小</span><br><span class="line"> 1 : 我的数字比较大</span><br><span class="line"> 0 : 恭喜！你猜对了！</span><br></pre></td></tr></table></figure><p><b>示例:</b></p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: n = 10, pick = 6</span><br><span class="line">输出: 6</span><br></pre></td></tr></table></figure><h2>解析:</h2>在解题过程中需要注意溢出,解决方法有:(left-right)/2,或者(left+right)>>>1.<h3>方法1:</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> <span class="keyword">extends</span> <span class="title">GuessGame</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">guessNumber</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> left=<span class="number">1</span>,right=n,res,num;</span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">            res=left +(right - left)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(guess(res)==<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> res;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(guess(res)&lt;<span class="number">0</span>) &#123;</span><br><span class="line">                right = res -<span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                left = res +<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 数据结构 </tag>
+            
+            <tag> 二分查找 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>算法挑战——最大连续1的个数</title>
       <link href="/2019/08/13/twelve-2019-8-13/"/>
       <url>/2019/08/13/twelve-2019-8-13/</url>
