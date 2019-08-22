@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>算法挑战——Excel表列序号</title>
+      <link href="/2019/08/22/16/"/>
+      <url>/2019/08/22/16/</url>
+      
+        <content type="html"><![CDATA[<h2>Excel表列序号</h2><h3>类型:math</h3><h3>给定一个Excel表格中的列名称,返回其相应的列序号.</h3><p><b>例如,</b></p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">A -&gt; 1</span><br><span class="line">B -&gt; 2</span><br><span class="line">C -&gt; 3</span><br><span class="line">...</span><br><span class="line">Z -&gt; 26</span><br><span class="line">AA -&gt; 27</span><br><span class="line">AB -&gt; 28 </span><br><span class="line">...</span><br></pre></td></tr></table></figure><p><b>示例1:</b></p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: &quot;A&quot;</span><br><span class="line">输出: 1</span><br></pre></td></tr></table></figure><p><b>示例2:</b></p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: &quot;AB&quot;</span><br><span class="line">输出: 28</span><br></pre></td></tr></table></figure><p><b>示例3:</b></p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: &quot;ZY&quot;</span><br><span class="line">输出: 701</span><br></pre></td></tr></table></figure><h2>解析:</h2>对传入参数进行判断,长度小于1时,直接返回Unicode码减去64,若是长度大于1,每一位都是Unicode码减去64乘以26的length-索引-1次方, 叠加后返回结果.<h3>方法1:</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">titleToNumber</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> length = s.length();</span><br><span class="line">        <span class="keyword">int</span> res=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(length&lt;<span class="number">2</span>)&#123;</span><br><span class="line">            res=s.charAt(<span class="number">0</span>)-<span class="number">64</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i &lt; length; i++)&#123;</span><br><span class="line">                res+=(s.charAt(i)-<span class="number">64</span>)*Math.pow(<span class="number">26</span>,length-i-<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 数据结构 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>算法挑战——一年中的第几天</title>
       <link href="/2019/08/20/15/"/>
       <url>/2019/08/20/15/</url>
