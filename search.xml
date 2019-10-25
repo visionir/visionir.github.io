@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>浅谈JAVA十大排序算法（一）</title>
+      <link href="/2019/10/25/19/"/>
+      <url>/2019/10/25/19/</url>
+      
+        <content type="html"><![CDATA[<h1 id="浅谈java十大排序算法一"><a class="markdownIt-Anchor" href="#浅谈java十大排序算法一"></a> 浅谈JAVA十大排序算法（一）</h1><h2 id="冒泡排序"><a class="markdownIt-Anchor" href="#冒泡排序"></a> 冒泡排序</h2><p>冒泡排序的基本原理是比较相邻的两个元素，如果第一个元素大于(小于)第二个元素则交换他们，从第一组到最一组都进行比较即为完成一轮(最后一组的最后元素为已排序序列)，依次对未排序好的序列进行比较直到完成排序。</p><p>这里我们按照从小到大的顺序进行排序：</p><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">bubbleSort</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] bubbleSorted(<span class="keyword">int</span>[] sortArray) &#123;</span><br><span class="line">        <span class="keyword">int</span> length = sortArray.length;</span><br><span class="line">        <span class="keyword">if</span> (length &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> sortArray;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[] arr = Arrays.copyOf(sortArray, sortArray.length);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; length - <span class="number">1</span> - i; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (arr[j + <span class="number">1</span>] &lt; arr[j]) &#123;</span><br><span class="line">                    <span class="keyword">int</span> temp = arr[j];</span><br><span class="line">                    arr[j] = arr[j + <span class="number">1</span>];</span><br><span class="line">                    arr[j + <span class="number">1</span>] = temp;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> arr;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] a=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">50</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">50</span>;i++)&#123;</span><br><span class="line">            a[i]=(<span class="keyword">int</span>)(Math.random()*<span class="number">50</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        bubbleSort b=<span class="keyword">new</span> bubbleSort();</span><br><span class="line">        <span class="keyword">int</span>[] ss=b.bubbleSorted(a);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> d:ss)&#123;</span><br><span class="line">            System.out.print(d+<span class="string">","</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>实验结果如下:</p><p><img alt="冒泡排序" data-src="https://s2.ax1x.com/2019/10/25/KdHjjP.png" class="lozad"></p><h2 id="选择排序"><a class="markdownIt-Anchor" href="#选择排序"></a> 选择排序</h2><p>选择排序的原理是将未排序序列中的最大(小)值与未排序序列首个元素互换位置同时缩小未排序序列的范围直至排序结束。</p><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">selectSort</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] SelectSort(<span class="keyword">int</span>[] sortArray) &#123;</span><br><span class="line">        <span class="keyword">int</span> length = sortArray.length;</span><br><span class="line">        <span class="keyword">if</span> (length &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> sortArray;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[] arr = Arrays.copyOf(sortArray, sortArray.length);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length;i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> min=i;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;length;j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(arr[min]&gt;arr[j])&#123;</span><br><span class="line">                    min=j;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">int</span> temp=arr[i];</span><br><span class="line">            arr[i]=arr[min];</span><br><span class="line">            arr[min]=temp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> arr;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] a=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">50</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">50</span>;i++)&#123;</span><br><span class="line">            a[i]=(<span class="keyword">int</span>)(Math.random()*<span class="number">50</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        selectSort b=<span class="keyword">new</span> selectSort();</span><br><span class="line">        <span class="keyword">int</span>[] ss=b.SelectSort(a);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> d:ss)&#123;</span><br><span class="line">            System.out.print(d+<span class="string">","</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>实验结果如下:</p><p><img alt="选择排序" data-src="https://i.loli.net/2019/10/25/WSbgDRJarxnpq6i.png" class="lozad"></p><h2 id="插入排序"><a class="markdownIt-Anchor" href="#插入排序"></a> 插入排序</h2><p>插入排序的原理是将第一个元素作为中心，第二个至最后一个依次扫描，放置中心元素的左边或者右边的正确位置。</p><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">insertSort</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] InsertSort(<span class="keyword">int</span>[] sortArray) &#123;</span><br><span class="line">        <span class="keyword">int</span> length = sortArray.length;</span><br><span class="line">        <span class="keyword">if</span> (length &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> sortArray;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[] arr = Arrays.copyOf(sortArray, sortArray.length);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;arr.length;i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> temp=arr[i];</span><br><span class="line">            <span class="keyword">int</span> j=i;</span><br><span class="line">            <span class="keyword">while</span> (j&gt;<span class="number">0</span>&amp;&amp;temp&lt;arr[j-<span class="number">1</span>])&#123;</span><br><span class="line">                arr[j]=arr[j-<span class="number">1</span>];</span><br><span class="line">                j--;</span><br><span class="line">            &#125;</span><br><span class="line">            arr[j]=temp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> arr;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] a=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">50</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">50</span>;i++)&#123;</span><br><span class="line">            a[i]=(<span class="keyword">int</span>)(Math.random()*<span class="number">50</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        insertSort b=<span class="keyword">new</span> insertSort();</span><br><span class="line">        <span class="keyword">int</span>[] ss=b.InsertSort(a);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> d:ss)&#123;</span><br><span class="line">            System.out.print(d+<span class="string">","</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>实验结果如下：</p><p><img alt="插入排序" data-src="https://s2.ax1x.com/2019/10/25/KwZaC9.png" class="lozad"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 基础 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 数据结构 </tag>
+            
+            <tag> JAVA SE </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>java基础(二)</title>
       <link href="/2019/10/16/18/"/>
       <url>/2019/10/16/18/</url>
@@ -20,9 +49,9 @@
       
         <tags>
             
-            <tag> 基础 </tag>
-            
             <tag> JAVA SE </tag>
+            
+            <tag> 基础 </tag>
             
         </tags>
       
@@ -47,9 +76,9 @@
       
         <tags>
             
-            <tag> 基础 </tag>
-            
             <tag> JAVA SE </tag>
+            
+            <tag> 基础 </tag>
             
         </tags>
       
