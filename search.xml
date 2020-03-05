@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>如何通过cloudflare为你的个人博客提速?</title>
+      <link href="/2020/03/05/%E9%80%9A%E8%BF%87cloudflare%E4%B8%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E6%8F%90%E9%80%9F/"/>
+      <url>/2020/03/05/%E9%80%9A%E8%BF%87cloudflare%E4%B8%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E6%8F%90%E9%80%9F/</url>
+      
+        <content type="html"><![CDATA[<h1 id="如何通过cloudflare为个人博客提速"><a class="markdownIt-Anchor" href="#如何通过cloudflare为个人博客提速"></a> 如何通过cloudflare为个人博客提速?</h1><h2 id="cloudflare是什么"><a class="markdownIt-Anchor" href="#cloudflare是什么"></a> cloudflare是什么?</h2><h3 id="cloudflare是一家美国的跨国科技企业总部位于旧金山在英国伦敦亦设有办事处cloudflare以向客户提供网站安全管理-性能优化及相关的技术支持为主要业务通过基于反向代理的内容分发网络cdn-content-delivery-network-任播anycast技术-基于nginxlua架构的web应用防火墙waf-web-application-firewall及分布式域名解析服务distributed-domain-name-server等技术cloudflare可以帮助受保护站点抵御包括分布式拒绝服务攻击ddos-distributed-denial-of-service在内的大多数网络攻击确保该网站长期在线同时提升网站的性能-访问速度以改善访客体验"><a class="markdownIt-Anchor" href="#cloudflare是一家美国的跨国科技企业总部位于旧金山在英国伦敦亦设有办事处cloudflare以向客户提供网站安全管理-性能优化及相关的技术支持为主要业务通过基于反向代理的内容分发网络cdn-content-delivery-network-任播anycast技术-基于nginxlua架构的web应用防火墙waf-web-application-firewall及分布式域名解析服务distributed-domain-name-server等技术cloudflare可以帮助受保护站点抵御包括分布式拒绝服务攻击ddos-distributed-denial-of-service在内的大多数网络攻击确保该网站长期在线同时提升网站的性能-访问速度以改善访客体验"></a>     Cloudflare是一家美国的跨国科技企业,总部位于旧金山,在英国伦敦亦设有办事处.Cloudflare以向客户提供网站安全管理、性能优化及相关的技术支持为主要业务.通过基于反向代理的内容分发网络(CDN, Content Delivery Network)、任播(Anycast)技术、基于nginx+lua架构的Web应用防火墙(WAF, Web Application Firewall)及分布式域名解析服务(Distributed Domain Name Server)等技术,Cloudflare可以帮助受保护站点抵御包括分布式拒绝服务攻击(DDoS, Distributed Denial of Service)在内的大多数网络攻击,确保该网站长期在线,同时提升网站的性能、访问速度以改善访客体验.</h3><h2 id="为什么要选择cloudflare呢"><a class="markdownIt-Anchor" href="#为什么要选择cloudflare呢"></a> 为什么要选择cloudflare呢?</h2><h3 id="对于那些没有购买服务器将个人博客搭建在gitpage或者codingpages亦或是giteepage上的博主来说网站的访问速度特别慢非常影响阅读者的阅读心态有时甚至因为漫长的等待而选择离开因此通过cdn加速你的个人博客是一个不错的选择cdn的全称是content-delivery-network即内容分发网络font-color6dd5ed其基本思路是尽可能避开互联网上有可能影响数据传输速度和稳定性的瓶颈和环节使内容传输得更快-更稳定通过在网络各处放置节点服务器所构成的在现有的互联网基础之上的一层智能虚拟网络cdn系统能够实时地根据网络流量和各节点的连接-负载状况以及到用户的距离和响应时间等综合信息将用户的请求重新导向离用户最近的服务节点上其目的是使用户可就近取得所需内容解决-internet网络拥挤的状况提高用户访问网站的响应速度font简单的说cdn就相当于一个中转站为网站的所有者提供加速服务"><a class="markdownIt-Anchor" href="#对于那些没有购买服务器将个人博客搭建在gitpage或者codingpages亦或是giteepage上的博主来说网站的访问速度特别慢非常影响阅读者的阅读心态有时甚至因为漫长的等待而选择离开因此通过cdn加速你的个人博客是一个不错的选择cdn的全称是content-delivery-network即内容分发网络font-color6dd5ed其基本思路是尽可能避开互联网上有可能影响数据传输速度和稳定性的瓶颈和环节使内容传输得更快-更稳定通过在网络各处放置节点服务器所构成的在现有的互联网基础之上的一层智能虚拟网络cdn系统能够实时地根据网络流量和各节点的连接-负载状况以及到用户的距离和响应时间等综合信息将用户的请求重新导向离用户最近的服务节点上其目的是使用户可就近取得所需内容解决-internet网络拥挤的状况提高用户访问网站的响应速度font简单的说cdn就相当于一个中转站为网站的所有者提供加速服务"></a>     对于那些没有购买服务器,将个人博客搭建在GitPage或者CodingPages亦或是GiteePage上的博主来说,网站的访问速度特别慢,非常影响阅读者的阅读心态,有时甚至因为漫长的等待而选择离开,因此通过CDN加速你的个人博客是一个不错的选择.CDN的全称是Content Delivery Network,即内容分发网络.<font color="#6dd5ed">其基本思路是尽可能避开互联网上有可能影响数据传输速度和稳定性的瓶颈和环节,使内容传输得更快、更稳定.通过在网络各处放置节点服务器所构成的在现有的互联网基础之上的一层智能虚拟网络,CDN系统能够实时地根据网络流量和各节点的连接、负载状况以及到用户的距离和响应时间等综合信息将用户的请求重新导向离用户最近的服务节点上.其目的是使用户可就近取得所需内容,解决 Internet网络拥挤的状况,提高用户访问网站的响应速度.</font>简单的说,CDN就相当于一个中转站,为网站的所有者提供加速服务.</h3><h3 id="那么为什么要选择cloudflare呢对于有些只购买域名或者未购买域名的用户来说想要使用国内的cdn加速则font-color6dd5ed必须备案域名然而备案域名需要购买服务器font例如百度云cdn腾讯云cdn阿里云cdn七牛云cdn等服务商都需要进行域名备案而cloudflare是属于美国的一家科技公司旗下的cdn加速包括了免费加速和收费加速最主要的是无需备案加速效果也挺不错操作也非常简单那么下面就来介绍一下如何使用cloudflare吧"><a class="markdownIt-Anchor" href="#那么为什么要选择cloudflare呢对于有些只购买域名或者未购买域名的用户来说想要使用国内的cdn加速则font-color6dd5ed必须备案域名然而备案域名需要购买服务器font例如百度云cdn腾讯云cdn阿里云cdn七牛云cdn等服务商都需要进行域名备案而cloudflare是属于美国的一家科技公司旗下的cdn加速包括了免费加速和收费加速最主要的是无需备案加速效果也挺不错操作也非常简单那么下面就来介绍一下如何使用cloudflare吧"></a>     那么为什么要选择cloudflare呢?对于有些只购买域名或者未购买域名的用户来说想要使用国内的CDN加速则<font color="#6dd5ed">必须备案域名,然而备案域名需要购买服务器.</font>例如百度云CDN,腾讯云CDN,阿里云CDN,七牛云CDN等服务商都需要进行域名备案.而cloudflare是属于美国的一家科技公司,旗下的CDN加速包括了免费加速和收费加速,最主要的是无需备案,加速效果也挺不错.操作也非常简单，那么下面就来介绍一下如何使用cloudflare吧.</h3><h3 id="首先登陆cloudflare的官网点击右上角的sign-up注册账号注册完成后点击add-site添加你的网站域名"><a class="markdownIt-Anchor" href="#首先登陆cloudflare的官网点击右上角的sign-up注册账号注册完成后点击add-site添加你的网站域名"></a>     首先登陆<a href="https://www.cloudflare.com/" target="_blank" rel="noopener">cloudflare</a>的官网,点击右上角的Sign up注册账号,注册完成后点击Add site添加你的网站域名:</h3><p><img alt="cloudflare" data-src="https://s2.ax1x.com/2020/03/05/3Howz6.png" class="lozad"></p><h3 id="而后选择免费的加速计划在配置页面配置两个-cname-根域名子域名www均指向你的个人域名"><a class="markdownIt-Anchor" href="#而后选择免费的加速计划在配置页面配置两个-cname-根域名子域名www均指向你的个人域名"></a> 而后选择免费的加速计划在配置页面配置两个 CNAME (根域名(@),子域名(www))均指向你的个人域名,</h3><p><img alt="cloudflare" data-src="https://s2.ax1x.com/2020/03/05/3HTycV.png" class="lozad"></p><h3 id="随后系统会提示你修改域名的dns服务器根据系统的提示我们登陆自己的域名提供商控制台等运营商完成同步刷新之后再返回cloudflare进行设置即可通过测试加速后的访问速度也有了很大的提升你也可以选择付费使用cdn来继续提高你的网站访问速度"><a class="markdownIt-Anchor" href="#随后系统会提示你修改域名的dns服务器根据系统的提示我们登陆自己的域名提供商控制台等运营商完成同步刷新之后再返回cloudflare进行设置即可通过测试加速后的访问速度也有了很大的提升你也可以选择付费使用cdn来继续提高你的网站访问速度"></a> 随后系统会提示你修改域名的DNS服务器,根据系统的提示我们登陆自己的域名提供商控制台,等运营商完成同步刷新之后再返回cloudflare进行设置即可,通过测试加速后的访问速度也有了很大的提升,你也可以选择付费使用CDN来继续提高你的网站访问速度,</h3><p>不但如此cloudflare还自动开启了全站HTTPS功能,更多好玩的功能可以自行研究.<br><img alt="cloudflare" data-src="https://s2.ax1x.com/2020/03/05/3H73E4.png" class="lozad"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 基础 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 博客 </tag>
+            
+            <tag> CDN加速 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>MyBatis笔记(一)</title>
       <link href="/2019/11/29/21/"/>
       <url>/2019/11/29/21/</url>
@@ -76,11 +103,11 @@
       
         <tags>
             
-            <tag> 算法 </tag>
+            <tag> JAVA SE </tag>
             
             <tag> 数据结构 </tag>
             
-            <tag> JAVA SE </tag>
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -159,9 +186,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> 数据结构 </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -186,9 +213,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> 数据结构 </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -213,9 +240,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> 数据结构 </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -240,9 +267,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> 数据结构 </tag>
+            
+            <tag> 算法 </tag>
             
             <tag> 二分查找 </tag>
             
@@ -269,9 +296,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> 数据结构 </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -296,9 +323,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> 数据结构 </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -323,9 +350,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> 数据结构 </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -350,9 +377,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> 数据结构 </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -377,9 +404,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> 数据结构 </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -404,9 +431,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> 数据结构 </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -431,9 +458,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> 数据结构 </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -458,9 +485,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> 数据结构 </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -485,9 +512,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> 数据结构 </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -512,9 +539,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> 数据结构 </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
